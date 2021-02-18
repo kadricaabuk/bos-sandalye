@@ -1,0 +1,24 @@
+ion-content {
+    --background: #F4F5FA !important;
+}
+
+ion-card {
+    width: 44%;
+    max-height: 15%;
+    margin: 0.7em
+}
+
+ion-card-title {
+    font-size: 16px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

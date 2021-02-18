@@ -1,0 +1,99 @@
+<ion-content [fullscreen]="true">
+    <div class="head-svg">
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="417.109" height="177.622" viewBox="0 0 417.109 177.622">
+      <defs>
+        <clipPath id="clip-path">
+          <path id="Path_1951" data-name="Path 1951" d="M0-.069,414.007-.407l-.191,170.082-414.007.338Z" transform="matrix(1, -0.017, 0.017, 1, -18.068, -966.577)" fill="#fff" stroke="#707070" stroke-width="1"/>
+        </clipPath>
+      </defs>
+      <g id="Mask_Group_93" data-name="Mask Group 93" transform="translate(18.265 974.209)" clip-path="url(#clip-path)">
+        <path id="Path_2" data-name="Path 2" d="M21.113,506.263s136-131.743,296.116-82.1S563.864,12.047,563.864,12.047L547.451,768.72,15.621,757.357Z" transform="translate(283.22 -358.381) rotate(-155)" fill="#30aceb" opacity="0.2"/>
+        <path id="Path_1" data-name="Path 1" d="M18.555,382.238s136-131.743,296.116-82.1S531.829,11.363,531.829,11.363L544.893,644.7,13.063,633.333Z" transform="translate(348.611 -497.596) rotate(-155)" fill="#30aceb"/>
+      </g>
+    </svg>
+    </div>
+    <div class="content">
+        <ion-row style="padding-bottom: 1em;">
+            <ion-col size="12">
+                <h3 style="text-align: left; font-weight: 600;">Kayıt</h3>
+            </ion-col>
+        </ion-row>
+
+        <ion-item lines="none" style="margin-bottom: 0.5em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="İsim Soyisim" type="text" [(ngModel)]="name"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item lines="none" style="margin-bottom: 0.5em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="Kullanıcı Adı" type="text" [(ngModel)]="username"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item lines="none" style="margin-bottom: 0.5em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="E-mail" type="email" [(ngModel)]="email"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item lines="none" style="margin-bottom: 0.5em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="Telefon" type="tel" [(ngModel)]="phone"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item lines="none" style="margin-bottom: 0.5em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="Şifre" type="password" [(ngModel)]="password"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+        <ion-item lines="none" style="margin-bottom: 1em;">
+            <ion-row style="width: 100%;">
+                <ion-col size="12">
+                    <ion-input placeholder="Şifre Onay" type="password" [(ngModel)]="password2" (change)="deneme()"></ion-input>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+
+        <ion-button (click)="login()" expand="block" fill="solid" class="loginButton">
+            Kayıt Ol
+        </ion-button>
+        <ion-row style="width: 100%;">
+            <ion-col size="12" style="text-align: center;">
+                <p [routerLink]="['/sign-in']" routerLinkActive="router-link-active" style="color: gray;">Hesabın var mı? <b>Giriş Yap</b></p>
+            </ion-col>
+        </ion-row>
+        <!-- 
+        <ion-row>
+            <ion-col size="6" style="text-align: right;">
+                <ion-button (click)="onClick()" fill="solid" class="fbLogin">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12.001" height="24" viewBox="0 0 12.001 24">
+                  <path id="facebook_2_" data-name="facebook (2)" d="M16,3.985h2.191V.169A28.292,28.292,0,0,0,15,0C11.837,0,9.673,1.987,9.673,5.639V9H6.187v4.266H9.673V24h4.274V13.267h3.345L17.823,9H13.946V6.062c0-1.233.333-2.077,2.051-2.077Z" transform="translate(-6.187)" fill="#0f279e"/>
+                </svg>
+
+                </ion-button>
+            </ion-col>
+            <ion-col size="6">
+                <ion-button (click)="onClick()" fill="solid" class="googleLogin">
+                    <svg id="search_1_" data-name="search (1)" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path id="Path_30" data-name="Path 30" d="M5.319,146.29l-.835,3.119-3.053.065a12.021,12.021,0,0,1-.088-11.205h0l2.718.5,1.191,2.7a7.162,7.162,0,0,0,.067,4.822Z" transform="translate(0 -131.787)" fill="#fbbb00"/>
+                  <path id="Path_31" data-name="Path 31" d="M273.155,208.176a12,12,0,0,1-4.278,11.6h0l-3.424-.175-.485-3.025a7.152,7.152,0,0,0,3.077-3.652h-6.417v-4.747h11.527Z" transform="translate(-249.364 -198.418)" fill="#518ef8"/>
+                  <path id="Path_32" data-name="Path 32" d="M48.591,316.263h0a12,12,0,0,1-18.082-3.671l3.889-3.183a7.137,7.137,0,0,0,10.284,3.654Z" transform="translate(-29.079 -294.905)" fill="#28b446"/>
+                  <path id="Path_33" data-name="Path 33" d="M46.942,2.763,43.054,5.945a7.136,7.136,0,0,0-10.52,3.737l-3.909-3.2h0A12,12,0,0,1,46.942,2.763Z" transform="translate(-27.282)" fill="#f14336"/>
+                </svg>
+
+
+                </ion-button>
+            </ion-col>
+        </ion-row> -->
+    </div>
+
+
+</ion-content>

@@ -1,0 +1,85 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-title>
+            {{tabTitle}}
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/tabs/tab4" text=""></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <h3 class="ion-padding-horizontal">Genel Bilgiler</h3>
+    <div class="white-back ion-padding ion-margin-horizontal" style="padding-top: 0 !important; padding-bottom: 2em !important; padding-right: 2em;">
+        <ion-item>
+            <ion-label position="floating">İşletme Adı</ion-label>
+            <ion-input [(ngModel)]="placeName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">E-mail</ion-label>
+            <ion-input [(ngModel)]="placeMail"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Telefon</ion-label>
+            <ion-input [(ngModel)]="placePhone"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Şehir</ion-label>
+            <ion-select placeholder="Select One" (ionChange)="getIlce($event)">
+                <ion-select-option *ngFor="let il of il" [value]="il.plaka">{{il.il}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label>İlçe</ion-label>
+            <ion-select placeholder="Select One" (ionChange)="ilceId($event)">
+                <ion-select-option *ngFor="let ilce of ilce" [value]="ilce.id">{{ilce.ilce}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Mahalle</ion-label>
+            <ion-input [(ngModel)]="placeStreet"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Adres Tarifi</ion-label>
+            <ion-input [(ngModel)]="placeShortAddress"></ion-input>
+        </ion-item>
+    </div>
+    <h3 class="ion-padding-horizontal">Fotoğraflar</h3>
+    <div class="white-back ion-padding ion-margin-horizontal ">
+        FOTOĞRAF EKLE
+    </div>
+    <h3 class="ion-padding-horizontal">Korono Virüs Önlemleri</h3>
+    <div class="white-back ion-padding ion-margin-horizontal">
+        <ion-row *ngFor="let filter of filters" style="align-items: center; justify-content: center;">
+            <ion-col size="2">
+                <img src="../../assets/{{filter.filterName}}.svg" alt="">
+            </ion-col>
+            <ion-col size="6">
+                <p style="font-size: 20px; text-transform: capitalize;">{{filter.filterName}}</p>
+            </ion-col>
+            <ion-col size="4" style="text-align: right;" *ngIf="filter.type == 'boolean'">
+                <ion-toggle (click)="denme()" [(ngModel)]="filter.status"></ion-toggle>
+            </ion-col>
+            <ion-col size="4" style="text-align: right;padding-left: 2em;" *ngIf="filter.type !== 'boolean'">
+                <ion-input (click)="denme()" type="text" [(ngModel)]="filter.status" style="border-bottom: 1px solid rgba(0, 0, 0, 0.432);"></ion-input>
+            </ion-col>
+        </ion-row>
+    </div>
+
+    <ion-row class="ion-padding">
+        <ion-col size="6">
+            <ion-button (click)="onClick()" color="danger" expand="block" fill="solid">
+                İşletmeyi Sil
+            </ion-button>
+        </ion-col>
+        <ion-col size="6">
+            <ion-button (click)="savePlace()" color="primary" expand="block" fill="solid">
+                Kaydet
+            </ion-button>
+        </ion-col>
+    </ion-row>
+
+
+
+
+</ion-content>

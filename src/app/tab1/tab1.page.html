@@ -1,17 +1,53 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+    <ion-toolbar color="primary">
+        <ion-title>
+            {{tabTitle}}
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content closeDuration="500ms" pullingIcon="chevron-down-circle-outline" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">>
+        </ion-refresher-content>
+    </ion-refresher>
+    <ion-row>
+        <ion-col size="10">
+            <ion-searchbar placeholder="Boş Sandalye Ara..." inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="never"></ion-searchbar>
+        </ion-col>
+        <ion-col size="2" style="padding-left: 0 !important;">
+            <ion-button class="filterButton" (click)="onClick()" fill="solid">
+                <svg id="filter" xmlns="http://www.w3.org/2000/svg" width="21.284" height="19.5" viewBox="0 0 21.284 19.5">
+                  <path id="Shape" d="M20.451,1.616H7.771A2.611,2.611,0,0,0,5.291,0,2.611,2.611,0,0,0,2.812,1.616H.833A.8.8,0,0,0,0,2.37a.8.8,0,0,0,.833.754H2.812A2.611,2.611,0,0,0,5.291,4.74,2.611,2.611,0,0,0,7.771,3.124h12.68a.8.8,0,0,0,.833-.754A.8.8,0,0,0,20.451,1.616Z" fill="#fff"/>
+                  <path id="Shape-2" data-name="Shape" d="M20.451,1.616H18.472a2.71,2.71,0,0,0-4.959,0H.833A.8.8,0,0,0,0,2.37a.8.8,0,0,0,.833.754h12.68a2.71,2.71,0,0,0,4.959,0h1.979a.8.8,0,0,0,.833-.754A.8.8,0,0,0,20.451,1.616Z" transform="translate(0 7.38)" fill="#fff"/>
+                  <path id="Shape-3" data-name="Shape" d="M20.451,1.616H11.338A2.611,2.611,0,0,0,8.858,0,2.611,2.611,0,0,0,6.379,1.616H.833A.8.8,0,0,0,0,2.37a.8.8,0,0,0,.833.754H6.379A2.611,2.611,0,0,0,8.858,4.74a2.611,2.611,0,0,0,2.479-1.616h9.113a.8.8,0,0,0,.833-.754A.8.8,0,0,0,20.451,1.616Z" transform="translate(0 14.76)" fill="#fff"/>
+                </svg>
+            </ion-button>
+        </ion-col>
+    </ion-row>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <div class="cards">
+
+        <ion-card *ngFor="let place of places" [routerLink]="['/place-detail']" (click)="goLocal(place)" routerLinkActive="router-link-active">
+            <img src="https://static.ilanversen.com/ilan/foto/2/6-JPG-78-6693.jpg" />
+            <ion-card-header>
+                <ion-card-title style="text-align: center; text-transform: capitalize;">{{place.placeName}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding">
+
+                <div class="ion-margin-horizontal" style="margin-bottom: 15px !important; text-align: center;">
+                    <ion-icon name="location"></ion-icon>{{place.il | titlecase}}
+                </div>
+                <div class="filters">
+                    <ion-row size="12" *ngFor="let filter of filters" style="text-align: center; align-items: center;">
+                        <ion-col *ngIf="filter.placeId == place.placeId && filter.isHaving == 'true'" style="text-align: center !important; align-items: center !important;">
+                            <img width="18" src="../../assets/{{filter.filterName}}.svg" alt="">
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+
+    </div>
 </ion-content>

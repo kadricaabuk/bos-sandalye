@@ -1,0 +1,68 @@
+<ion-header [translucent]="true">
+    <ion-toolbar color="primary">
+        <ion-title>
+            {{tabTitle}}
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+    <!-- 
+  <div class="noPlace">
+      <h3 style="color: #E0E1E5;">
+          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="0 0 180 180">
+                  <defs>
+                    <clipPath id="clip-path">
+                      <rect id="Rectangle_500" data-name="Rectangle 500" width="180" height="180" transform="translate(117 120)" fill="#e0e1e5" stroke="#707070" stroke-width="1"/>
+                    </clipPath>
+                  </defs>
+                  <g id="Mask_Group_75" data-name="Mask Group 75" transform="translate(-117 -120)" clip-path="url(#clip-path)">
+                    <g id="store" transform="translate(117 120)">
+                      <g id="Group_639" data-name="Group 639">
+                        <g id="Group_638" data-name="Group 638">
+                          <path id="Path_2079" data-name="Path 2079" d="M179.831,60.514,169.65,19.766a11.241,11.241,0,0,0-10.912-8.516H21.274A11.264,11.264,0,0,0,10.35,19.766L.169,60.514A5.5,5.5,0,0,0,0,61.875C0,77.378,11.981,90,26.719,90A26.252,26.252,0,0,0,47.813,79.121a25.89,25.89,0,0,0,42.188,0,25.89,25.89,0,0,0,42.188,0A26.236,26.236,0,0,0,153.281,90C168.019,90,180,77.378,180,61.875A5.5,5.5,0,0,0,179.831,60.514Z" fill="#e0e1e5"/>
+                        </g>
+                      </g>
+                      <g id="Group_641" data-name="Group 641">
+                        <g id="Group_640" data-name="Group 640">
+                          <path id="Path_2080" data-name="Path 2080" d="M153.281,101.25a36.807,36.807,0,0,1-21.094-6.615,37.859,37.859,0,0,1-42.187,0,37.859,37.859,0,0,1-42.187,0A36.523,36.523,0,0,1,11.25,97.751V157.5A11.254,11.254,0,0,0,22.5,168.75h45v-45h45v45h45a11.254,11.254,0,0,0,11.25-11.25V97.751A36.5,36.5,0,0,1,153.281,101.25Z" fill="#e0e1e5"/>
+                        </g>
+                      </g>
+                    </g>
+                  </g>
+                </svg>
+          <br> Kayıtlı işletme bulunamadı!</h3>
+  </div> -->
+
+    <div class="cards">
+        <ion-card *ngFor="let place of places" [routerLink]="['/place-detail']" (click)="goLocal(place)" routerLinkActive="router-link-active">
+            <img src="https://static.ilanversen.com/ilan/foto/2/6-JPG-78-6693.jpg" />
+            <ion-card-header>
+                <ion-card-title style="text-align: center;">{{place.placeName}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding">
+
+                <div class="ion-margin-horizontal" style="margin-bottom: 15px !important; text-align: center;">
+                    <ion-icon name="location"></ion-icon>{{place.il | titlecase}}
+                </div>
+                <div class="filters">
+                    <ion-row size="12" *ngFor="let filter of filters" style="text-align: center; align-items: center;">
+                        <ion-col *ngIf="filter.placeId == place.placeId && filter.isHaving == 'true'" style="text-align: center !important; align-items: center !important;">
+                            <img width="18" src="../../assets/{{filter.filterName}}.svg" alt="">
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+
+    </div>
+</ion-content>
+
+
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button>
+        <ion-icon name="add" [routerLink]="['/add-place']"></ion-icon>
+    </ion-fab-button>
+</ion-fab>

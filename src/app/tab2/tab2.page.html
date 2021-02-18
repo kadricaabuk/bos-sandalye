@@ -1,17 +1,38 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+    <ion-toolbar color="primary">
+        <ion-title>
+            {{tabTitle}}
+        </ion-title>
     </ion-toolbar>
-  </ion-header>
+</ion-header>
+<ion-content [fullscreen]="true">
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <div class="cards">
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+        <ion-card *ngFor="let place of favList" [routerLink]="['/place-detail']" (click)="goLocal(place)" routerLinkActive="router-link-active">
+            <img src="https://static.ilanversen.com/ilan/foto/2/6-JPG-78-6693.jpg" />
+            <ion-card-header>
+                <ion-card-title style="text-align: center;">{{place.placeName}}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding">
+
+                <div class="ion-margin-horizontal" style="margin-bottom: 15px !important; text-align: center;">
+                    <ion-icon name="location"></ion-icon>{{place.il | titlecase}}
+                </div>
+                <div class="filters">
+                    <ion-row size="12" *ngFor="let filter of filters" style="text-align: center; align-items: center;">
+                        <ion-col *ngIf="filter.placeId == place.placeId && filter.isHaving == 'true'" style="text-align: center !important; align-items: center !important;">
+                            <img width="18" src="../../assets/{{filter.filterName}}.svg" alt="">
+                        </ion-col>
+                    </ion-row>
+                </div>
+            </ion-card-content>
+        </ion-card>
+
+
+
+    </div>
 </ion-content>

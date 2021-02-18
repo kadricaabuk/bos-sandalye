@@ -1,0 +1,41 @@
+ion-content {
+    --background: #F4F5FA !important;
+}
+
+.info-container {
+    padding-top: 2em !important;
+    padding: 1em;
+    padding-bottom: 0 !important;
+    padding-top: 0.8em !important;
+}
+
+.info-white {
+    background-color: white;
+    padding: 1em;
+    padding-top: 2em !important;
+    border-radius: 1em;
+    margin-top: -2em;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.1);
+}
+
+.info-white>h3,
+.info-white>p {
+    margin: 0;
+    text-align: center;
+}
+
+.avatar-container {
+    text-align: center;
+}
+
+li {
+    background-color: white;
+    box-shadow: 0px 0px 15px -2px rgba(0, 0, 0, 0.1);
+    padding: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.4em;
+}
+
+.list-item-title {
+    margin: 0;
+}

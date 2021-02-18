@@ -1,0 +1,30 @@
+ion-content {
+    --background: #F4F5FA !important;
+}
+
+ion-card {
+    width: 90%;
+    max-height: 15%;
+    margin-bottom: 0;
+}
+
+ion-card-title {
+    font-size: 16px;
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.segment {
+    padding: 1em;
+    padding-bottom: 0 !important;
+}
+
+.placeImage {
+    border-radius: 0.3em;
+}
